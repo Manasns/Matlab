@@ -1,0 +1,16 @@
+h = 0.05;
+w = 2;
+vt = [[1 0]']
+vtx = [1];
+vty = [0];
+B = [1 -h; 0 1];
+C = [1 0; -4 1];
+A = inv(B)*C;
+for i=1:100
+    vec = [vtx(i) vty(i)]';
+    vtemp = (A)*vec;
+    vtx = [vtx vtemp(1)];
+    vty = [vty vtemp(2)];
+end
+eig(A)
+scatter(vtx, vty)

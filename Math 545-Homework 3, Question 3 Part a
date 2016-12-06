@@ -1,0 +1,15 @@
+h = 0.05
+w = 2;
+vt = [[1 0]']
+vtx = [1];
+vty = [0];
+A = [[1 -h*w^2]',[h 1]']
+vt
+for i=1:100
+    vec = [vtx(i) vty(i)]';
+    vtemp = A*vec;
+    vtx = [vtx vtemp(1)];
+    vty = [vty vtemp(2)];
+end
+eig(A)
+scatter(vtx,vty)
